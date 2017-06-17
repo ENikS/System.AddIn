@@ -6,6 +6,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
 
-    <UniformGrid Rows="2" Columns="2">
+    <UniformGrid Columns="2">
     </UniformGrid>
 </Window>

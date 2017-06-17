@@ -39,16 +39,18 @@ namespace Reparenting_WPF
         {
             IEnumerable<AddInToken> tokens = AddInStore.FindAddIns(typeof(IControlFactory), Environment.CurrentDirectory);
 
-            var root = Content;
+            foreach (var token in tokens)
+            {
+                IControlFactory factory = token.Activate<IControlFactory>(AppDomain.CreateDomain(token.Name + " App Domain"));
+                ((Panel)Content).Children.Add(factory.GetControl());
+                _factories.Add(factory);
+            }
 
             foreach (var token in tokens)
             {
-                for (var i = 0; i < 4; i++)
-                {
-                    IControlFactory factory = token.Activate<IControlFactory>(AppDomain.CreateDomain(token.Name + " App Domain " + i));
-                    ((Panel)Content).Children.Add(factory.GetControl());
-                    _factories.Add(factory);
-                }
+                IControlFactory factory = token.Activate<IControlFactory>(AppDomain.CreateDomain(token.Name + " App Domain"));
+                ((Panel)Content).Children.Add(factory.GetControl());
+                _factories.Add(factory);
             }
         }
 
