@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Media3D;
 
-namespace AddIn.Controls
+namespace ControlFactoryAddIn.Controls
 {
     /// <summary>
     /// Interaction logic for CubeControl.xaml

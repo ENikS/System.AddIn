@@ -65,11 +65,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControlFactory.cs" />
+    <Compile Include="Core\ControlFactory.cs" />
     <Compile Include="Controls\CubeControl.xaml.cs">
       <DependentUpon>CubeControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\DataGridControl.xaml.cs">
+      <DependentUpon>DataGridControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CubeAnimationFactory.cs" />
+    <Compile Include="DataGridFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SampleData\SampleDataSource\SampleDataSource.xaml.cs">
+      <DependentUpon>SampleDataSource.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AddInView\Demo.AddInView.csproj">
@@ -83,9 +91,20 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\DataGridControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SampleData\SampleDataSource\SampleDataSource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\roundcornersheet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SampleData\SampleDataSource\SampleDataSource.xsd" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

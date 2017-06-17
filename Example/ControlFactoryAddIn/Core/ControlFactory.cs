@@ -1,15 +1,15 @@
-﻿using AddIn.Controls;
+﻿using ControlFactoryAddIn.Controls;
 using Demo.AddInView;
 using System;
 using System.AddIn;
 using System.AddIn.Pipeline;
+using System.Collections;
+using System.Collections.Generic;
 using System.Threading;
 using System.Windows;
 
 namespace Demo.AddIn
 {
-    [AddIn("Control Factory", Description = "Demo implementation of control factory")]
-    [QualificationData("Isolation", "NewAppDomain")]
     public class ControlFactory : IControlFactory
     {
         #region Fields
@@ -51,9 +51,9 @@ namespace Demo.AddIn
 
         #region IControlFactory
 
-        public FrameworkElement GetControl()
+        public virtual FrameworkElement GetControl() 
         {
-            return new CubeControl();
+            throw new NotImplementedException();
         }
 
         #endregion
