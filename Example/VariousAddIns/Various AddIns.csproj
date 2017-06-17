@@ -65,6 +65,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\WebBrowserControl.xaml.cs">
+      <DependentUpon>WebBrowserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Core\ControlFactory.cs" />
     <Compile Include="Controls\CubeControl.xaml.cs">
       <DependentUpon>CubeControl.xaml</DependentUpon>
@@ -78,6 +81,7 @@
     <Compile Include="SampleData\SampleDataSource\SampleDataSource.xaml.cs">
       <DependentUpon>SampleDataSource.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WebBrowserFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AddInView\Demo.AddInView.csproj">
@@ -92,6 +96,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\DataGridControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\WebBrowserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

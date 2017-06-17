@@ -17,9 +17,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.HostSideAdapters", "Ho
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.HostView", "HostView\Demo.HostView.csproj", "{D589DDD6-6C12-4924-8831-3F312BBEA53E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlFactoryAddIn", "ControlFactoryAddIn\ControlFactoryAddIn.csproj", "{71E0E79C-FFF8-441D-82D2-D50FDE809C14}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AddIn Controls", "AddIn Controls", "{E7100699-DDB3-48B9-8423-65F9604770A5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AddIns", "AddIns", "{E7100699-DDB3-48B9-8423-65F9604770A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Various AddIns", "VariousAddIns\Various AddIns.csproj", "{71E0E79C-FFF8-441D-82D2-D50FDE809C14}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
