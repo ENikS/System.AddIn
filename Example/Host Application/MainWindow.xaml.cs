@@ -3,10 +3,12 @@ using System;
 using System.AddIn.Hosting;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Reparenting_WPF
+namespace Example.Reparenting.WPF
 {
 
     /// <summary>
@@ -27,7 +29,9 @@ namespace Reparenting_WPF
         {
             InitializeComponent();
 
-            Dispatcher.BeginInvoke(new Action(FillGrid));
+            IEnumerable<AddInToken> tokens = AddInStore.FindAddIns(typeof(IControlFactory), Environment.CurrentDirectory);
+
+            Task.Factory.StartNew(() => tokens.AsParallel().ForAll(AddChildToRoot));
         }
 
         #endregion
@@ -35,24 +39,18 @@ namespace Reparenting_WPF
 
         #region Implementation
 
-        private void FillGrid()
+        private void AddChildToRoot(AddInToken token)
         {
-            IEnumerable<AddInToken> tokens = AddInStore.FindAddIns(typeof(IControlFactory), Environment.CurrentDirectory);
+            IControlFactory factory = token.Activate<IControlFactory>(AppDomain.CreateDomain(token.Name + " App Domain"));
+            FrameworkElement control = factory.GetControl();
 
-            foreach (var token in tokens)
+            Application.Current.Dispatcher.BeginInvoke(new Action(() =>
             {
-                IControlFactory factory = token.Activate<IControlFactory>(AppDomain.CreateDomain(token.Name + " App Domain"));
-                ((Panel)Content).Children.Add(factory.GetControl());
+                ((Panel)Content).Children.Add(control);
                 _factories.Add(factory);
-            }
-
-            foreach (var token in tokens)
-            {
-                IControlFactory factory = token.Activate<IControlFactory>(AppDomain.CreateDomain(token.Name + " App Domain"));
-                ((Panel)Content).Children.Add(factory.GetControl());
-                _factories.Add(factory);
-            }
+            }));
         }
+
 
         protected override void OnClosing(CancelEventArgs e)
         {

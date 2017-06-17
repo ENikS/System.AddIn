@@ -21,11 +21,17 @@ namespace Demo.HostSideAdapters
 
         public FrameworkElement GetControl()
         {
+            FrameworkElement element = null;
+
             var contract = _contract.GetControl();
             var handle = new ContractHandle(contract);
 
-            var element = FrameworkElementAdapters.ContractToViewAdapter(contract);
-            element.Unloaded += (s, e) => handle.Dispose();
+            Application.Current.Dispatcher.Invoke(new Action(() =>
+            {
+                element = FrameworkElementAdapters.ContractToViewAdapter(contract);
+                element.Unloaded += (s, e) => handle.Dispose();
+            }));
+
 
             return element;
         }

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows;
 
-namespace Reparenting_WPF
+namespace Example.Reparenting.WPF
 {
     /// <summary>
     /// Interaction logic for App.xaml
