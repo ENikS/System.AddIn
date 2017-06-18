@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="ControlFactoryAddIn.Controls.WebBrowserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             MinHeight="150" MinWidth="150"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <WebBrowser Source="http://www.google.com" />
+        <!--<DockPanel>
+            <StackPanel DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="10" Orientation="Horizontal">
+                <Label Target="{Binding ElementName=_address}">_http://</Label>
+                <TextBox Name="_address" Width="200" Height="24" VerticalContentAlignment="Center" />
+                <Button Name="_goButton" Margin="10 0 0 0" Width="30" IsDefault="True">Go</Button>
+            </StackPanel>
+            <WebBrowser Name="_wb" Source="http://bing.com" />
+        </DockPanel>-->
+    </Grid>
+</UserControl>

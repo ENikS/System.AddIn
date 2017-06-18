@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             MinHeight="150" MinWidth="150"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
@@ -55,7 +56,7 @@
         
     </UserControl.Resources>
 
-    <Grid Background="maroon">
+    <Grid Background="maroon" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 
         <Viewport3D Focusable="true" Name="myViewport3D" ClipToBounds="true">
             <Viewport3D.Camera>

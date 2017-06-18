@@ -6,6 +6,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="700">
 
-    <UniformGrid Columns="2">
-    </UniformGrid>
+    <!--<UniformGrid Columns="2" />-->
+    <StackPanel  />
 </Window>

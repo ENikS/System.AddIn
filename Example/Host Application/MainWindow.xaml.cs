@@ -29,9 +29,7 @@ namespace Example.Reparenting.WPF
         {
             InitializeComponent();
 
-            IEnumerable<AddInToken> tokens = AddInStore.FindAddIns(typeof(IControlFactory), Environment.CurrentDirectory);
-
-            Task.Factory.StartNew(() => tokens.AsParallel().ForAll(AddChildToRoot));
+            Task.Factory.StartNew(Initialize);
         }
 
         #endregion
@@ -39,18 +37,35 @@ namespace Example.Reparenting.WPF
 
         #region Implementation
 
-        private void AddChildToRoot(AddInToken token)
+        /// <summary>
+        /// Create AppDomains and controls in parallel
+        /// </summary>
+        private void Initialize()
         {
-            IControlFactory factory = token.Activate<IControlFactory>(AppDomain.CreateDomain(token.Name + " App Domain"));
-            FrameworkElement control = factory.GetControl();
+            var addIns = AddInStore.FindAddIns(typeof(IControlFactory), Environment.CurrentDirectory)
+                                   .AsParallel()
+                                   .WithExecutionMode(ParallelExecutionMode.ForceParallelism)
+                                   .WithMergeOptions(ParallelMergeOptions.AutoBuffered)
+                                   .Select(GetControlFromFactory)
+                                   .ToArray();
 
             Application.Current.Dispatcher.BeginInvoke(new Action(() =>
             {
-                ((Panel)Content).Children.Add(control);
-                _factories.Add(factory);
+                foreach (var tuple in addIns)
+                {
+                    _factories.Add(tuple.Item1);
+                    ((Panel)Content).Children.Add(tuple.Item2);
+                }
             }));
+
         }
 
+        private Tuple<IDisposable, FrameworkElement> GetControlFromFactory(AddInToken token)
+        {
+            IControlFactory factory = token.Activate<IControlFactory>(AppDomain.CreateDomain(token.Name + " App Domain"));
+
+            return new Tuple<IDisposable, FrameworkElement>(factory, factory.GetControl());
+        }
 
         protected override void OnClosing(CancelEventArgs e)
         {
@@ -61,10 +76,7 @@ namespace Example.Reparenting.WPF
 
             base.OnClosing(e);
 
-            foreach(var factory in _factories)
-            {
-                factory.Dispose();
-            }
+            _factories.AsParallel().ForAll((factory) => factory.Dispose());
         }
 
         #endregion
