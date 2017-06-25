@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.13
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pipeline", "Pipeline", "{73AADE07-D956-4EFC-B482-8C7EAF346D2E}"
 EndProject
@@ -20,6 +20,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AddIn Controls", "AddIn Controls", "{E7100699-DDB3-48B9-8423-65F9604770A5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Various AddIns", "VariousAddIns\Various AddIns.csproj", "{71E0E79C-FFF8-441D-82D2-D50FDE809C14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameworkElementAsyncAdapters", "FrameworkElementAsyncAdapters\FrameworkElementAsyncAdapters.csproj", "{2B25BC5B-EE9F-454B-993B-BF62B47D8306}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,10 @@ Global
 		{71E0E79C-FFF8-441D-82D2-D50FDE809C14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71E0E79C-FFF8-441D-82D2-D50FDE809C14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71E0E79C-FFF8-441D-82D2-D50FDE809C14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B25BC5B-EE9F-454B-993B-BF62B47D8306}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B25BC5B-EE9F-454B-993B-BF62B47D8306}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B25BC5B-EE9F-454B-993B-BF62B47D8306}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B25BC5B-EE9F-454B-993B-BF62B47D8306}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

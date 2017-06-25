@@ -29,6 +29,7 @@ namespace Demo.HostSideAdapters
             Application.Current.Dispatcher.Invoke(new Action(() =>
             {
                 element = FrameworkElementAdapters.ContractToViewAdapter(contract);
+                //element = FrameworkElementAsyncAdapters.ContractToViewAdapter(contract);
                 element.Unloaded += (s, e) => handle.Dispose();
             }));
 

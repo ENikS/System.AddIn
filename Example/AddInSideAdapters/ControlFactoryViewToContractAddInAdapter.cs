@@ -35,7 +35,8 @@ namespace Demo.AddInSideAdapters
             Application.Current.Dispatcher.Invoke(new Action(() =>
             {
                 var element = _factory.GetControl();
-                value = FrameworkElementAdapters.ViewToContractAdapter(element);
+                //value = FrameworkElementAdapters.ViewToContractAdapter(element);
+                value = FrameworkElementAsyncAdapters.ViewToContractAdapter(element);
             }));
 
             return value;
